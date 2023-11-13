@@ -124,6 +124,10 @@ jobs:
       id: organize
       run: ./openwrt-$OPENWRT_BRANCH/steps/organize_files.sh $OPENWRT_BRANCH $RELTAG
 
+    - name: Release Changelog Builder
+      id: build_changelog
+      uses: mikepenz/release-changelog-builder-action@v4.1.0
+
     - name: Create release
       id: create_release
       uses: ncipollo/release-action@v1.11.1
@@ -131,9 +135,9 @@ jobs:
       with:
         name: OpenWrt ${{ env.OPENWRT_BRANCH }} ${{ env.BUILD_STRING }}
         allowUpdates: true
-        tag: OpenWrtAO-${{ env.OPENWRT_BRANCH }}-${{ env.RELTAG }}
+        tag: OpenWrt-${{ env.OPENWRT_BRANCH }}-${{ env.RELTAG }}
         commit: main
         replacesArtifacts: true
         token: ${{ secrets.GITHUB_TOKEN }}
-        bodyFile: "openwrt-${{ env.OPENWRT_BRANCH }}/release-info.md"
+        bodyFile: ${{steps.build_changelog.outputs.changelog}}
         artifacts: ./artifact/*.img.gz
