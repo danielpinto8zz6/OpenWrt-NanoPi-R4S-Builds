@@ -21,32 +21,6 @@ define U-Boot/Default
   HIDDEN:=1
 endef
 
-
-# RK3328 boards
-
-define U-Boot/nanopi-r2c-rk3328
-  BUILD_SUBTARGET:=armv8
-  NAME:=NanoPi R2C
-  BUILD_DEVICES:= \
-    friendlyarm_nanopi-r2c
-  DEPENDS:=+PACKAGE_u-boot-nanopi-r2c-rk3328:arm-trusted-firmware-rockchip
-  PKG_BUILD_DEPENDS:=arm-trusted-firmware-rockchip
-  ATF:=rk3328_bl31.elf
-endef
-
-define U-Boot/nanopi-r2s-rk3328
-  BUILD_SUBTARGET:=armv8
-  NAME:=NanoPi R2S
-  BUILD_DEVICES:= \
-    friendlyarm_nanopi-r2s
-  DEPENDS:=+PACKAGE_u-boot-nanopi-r2s-rk3328:arm-trusted-firmware-rockchip
-  PKG_BUILD_DEPENDS:=arm-trusted-firmware-rockchip
-  ATF:=rk3328_bl31.elf
-endef
-
-
-# RK3399 boards
-
 define U-Boot/nanopi-r4s-rk3399
   BUILD_SUBTARGET:=armv8
   NAME:=NanoPi R4S
@@ -57,32 +31,8 @@ define U-Boot/nanopi-r4s-rk3399
   ATF:=rk3399_bl31.elf
 endef
 
-define U-Boot/rock-pi-4-rk3399
-  BUILD_SUBTARGET:=armv8
-  NAME:=Rock Pi 4
-  BUILD_DEVICES:= \
-    radxa_rock-pi-4a
-  DEPENDS:=+PACKAGE_u-boot-rock-pi-4-rk3399:arm-trusted-firmware-rockchip
-  PKG_BUILD_DEPENDS:=arm-trusted-firmware-rockchip
-  ATF:=rk3399_bl31.elf
-endef
-
-define U-Boot/rockpro64-rk3399
-  BUILD_SUBTARGET:=armv8
-  NAME:=RockPro64
-  BUILD_DEVICES:= \
-    pine64_rockpro64
-  DEPENDS:=+PACKAGE_u-boot-rockpro64-rk3399:arm-trusted-firmware-rockchip
-  PKG_BUILD_DEPENDS:=arm-trusted-firmware-rockchip
-  ATF:=rk3399_bl31.elf
-endef
-
 UBOOT_TARGETS := \
-  nanopi-r4s-rk3399 \
-  rock-pi-4-rk3399 \
-  rockpro64-rk3399 \
-  nanopi-r2c-rk3328 \
-  nanopi-r2s-rk3328
+  nanopi-r4s-rk3399
 
 UBOOT_CONFIGURE_VARS += USE_PRIVATE_LIBGCC=yes
 
