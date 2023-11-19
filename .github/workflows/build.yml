@@ -99,7 +99,7 @@ jobs:
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
 
-    - name: Load AO seed
+    - name: Load seed
       run: ./openwrt-$OPENWRT_BRANCH/steps/06-create_config_from_seed.sh
 
     - name: Build kmods
